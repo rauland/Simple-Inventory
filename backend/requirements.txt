@@ -1,7 +1,11 @@
 fastapi==0.104.1
 uvicorn==0.24.0.post1
 SQLAlchemy==2.0.23
+sqlalchemy-orm==1.2.10
 psycopg2==2.9.9
 python-dotenv==1.0.0
+alembic==1.12.1
+pydantic[email] 
+passlib[bcrypt] 
 
 # pip install -r requirements.txt
