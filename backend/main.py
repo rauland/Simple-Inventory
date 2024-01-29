@@ -2,9 +2,11 @@ from typing import Optional
 from fastapi import FastAPI
 from pydantic import BaseModel
 from core.config import DATABASE_URL
-from sqlalchemy import create_engine, Column, Integer, String, Float, MetaData
+from sqlalchemy import create_engine, Column, Integer, String, Float, MetaData, text
+from sqlalchemy.sql import select
 from sqlalchemy.orm import declarative_base, Session, sessionmaker
 from fastapi.middleware.cors import CORSMiddleware
+from datetime import datetime
 
 # Create a database engine and session
 engine = create_engine(DATABASE_URL, echo=True)
@@ -23,7 +25,7 @@ class ItemModel(Base):
     price_with_tax = Column(Float)
 
 # Initialize the database schema
-# Base.metadata.create_all(bind=engine)
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
@@ -44,7 +46,7 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins= origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -65,25 +67,27 @@ async def create_item(item: Item):
     db.close()
 
     return db_item    
-    
-    ### OLD TAX RESPONSE METHOD
-    # item_dict = item.dict()
-    # if item.tax:
-    #     price_with_tax = item.price + item.tax
-    #     item_dict.update({"price_with_tax": price_with_tax})
-    # return item_dict
-
-@app.put("/items/{item_id}")
-async def create_item(item_id: int, item: Item):
-    return {"item_id": item_id, **item.dict()}
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World 🚀"}
+    current_date = datetime.now()
+    date_string = current_date.strftime("%Y-%m-%d")
+    return {"current_date": date_string}
+
+@app.get("/items/")
+async def read_items():
+    db = SessionLocal()
+    items = db.query(ItemModel)
+    db.close()
+    return items
 
 @app.get("/items/{item_id}")
 async def read_item(item_id: int):
-    return {"item_id": item_id}
+    db = SessionLocal()
+    item = db.query(ItemModel).filter_by(id=item_id).first()
+    db.close()
+    return item
+
 
 @app.get("/users/me")
 async def read_user_me():
@@ -92,3 +96,21 @@ async def read_user_me():
 @app.get("/users/{user_id}")
 async def read_user(user_id: str):
     return {"user_id": user_id}
+
+
+
+
+
+
+
+
+    ### OLD TAX RESPONSE METHOD
+    # item_dict = item.dict()
+    # if item.tax:
+    #     price_with_tax = item.price + item.tax
+    #     item_dict.update({"price_with_tax": price_with_tax})
+    # return item_dict
+
+# @app.put("/items/{item_id}")
+# async def create_item(item_id: int, item: Item):
+#     return {"item_id": item_id, **item.dict()}
