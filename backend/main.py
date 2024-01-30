@@ -2,11 +2,13 @@ from typing import Optional
 from fastapi import FastAPI
 from pydantic import BaseModel
 from core.config import DATABASE_URL
-from sqlalchemy import create_engine, Column, Integer, String, Float, MetaData, text
-from sqlalchemy.sql import select
+from sqlalchemy import create_engine, Column, Integer, String, Float, MetaData
 from sqlalchemy.orm import declarative_base, Session, sessionmaker
 from fastapi.middleware.cors import CORSMiddleware
 from datetime import datetime
+
+from api.endpoints import item
+from api.endpoints import user
 
 # Create a database engine and session
 engine = create_engine(DATABASE_URL, echo=True)
@@ -28,6 +30,9 @@ class ItemModel(Base):
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+
+app.include_router(user.router)
+app.include_router(item.router)
 
 # Pydantic model for input validation
 class Item(BaseModel):
@@ -52,21 +57,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.post("/items/")
-async def create_item(item: Item):
-    db_item = ItemModel(**item.dict())
 
-    if item.tax:
-        db_item.price_with_tax = item.price + item.tax
-
-    # Use a database session to add the new item
-    db = SessionLocal()
-    db.add(db_item)
-    db.commit()
-    db.refresh(db_item)
-    db.close()
-
-    return db_item    
 
 @app.get("/")
 async def root():
@@ -74,43 +65,4 @@ async def root():
     date_string = current_date.strftime("%Y-%m-%d")
     return {"current_date": date_string}
 
-@app.get("/items/")
-async def read_items():
-    db = SessionLocal()
-    items = db.query(ItemModel)
-    db.close()
-    return items
 
-@app.get("/items/{item_id}")
-async def read_item(item_id: int):
-    db = SessionLocal()
-    item = db.query(ItemModel).filter_by(id=item_id).first()
-    db.close()
-    return item
-
-
-@app.get("/users/me")
-async def read_user_me():
-    return {"user_id": "the current user"}
-
-@app.get("/users/{user_id}")
-async def read_user(user_id: str):
-    return {"user_id": user_id}
-
-
-
-
-
-
-
-
-    ### OLD TAX RESPONSE METHOD
-    # item_dict = item.dict()
-    # if item.tax:
-    #     price_with_tax = item.price + item.tax
-    #     item_dict.update({"price_with_tax": price_with_tax})
-    # return item_dict
-
-# @app.put("/items/{item_id}")
-# async def create_item(item_id: int, item: Item):
-#     return {"item_id": item_id, **item.dict()}
