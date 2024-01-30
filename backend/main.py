@@ -1,7 +1,7 @@
 from typing import Optional
 from fastapi import FastAPI
 from pydantic import BaseModel
-from core.config import DATABASE_URL
+from core.config import DATABASE_URL, CORS_URL
 from sqlalchemy import create_engine, Column, Integer, String, Float, MetaData
 from sqlalchemy.orm import declarative_base, Session, sessionmaker
 from fastapi.middleware.cors import CORSMiddleware
@@ -44,9 +44,9 @@ class Item(BaseModel):
 # Set up CORS middleware
 origins = [
     "http://localhost",
-    "http://localhost:3000",  # Update with the actual address of your frontend
-    "http://192.168.0.2",
-    "http://192.168.0.2:3000",
+    "http://localhost:3000",
+    f"http://{CORS_URL}",
+    f"http://{CORS_URL}:3000",
 ]
 
 app.add_middleware(

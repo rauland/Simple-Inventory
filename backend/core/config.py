@@ -25,3 +25,4 @@ url_object = URL.create(
 )
 
 DATABASE_URL = url_object
+CORS_URL = os.getenv("CORS_URL")
