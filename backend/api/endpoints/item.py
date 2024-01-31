@@ -1,12 +1,26 @@
 from fastapi import APIRouter
 from sqlalchemy.orm import Session
 from db.session import SessionLocal
-from models.item import ItemModel
+from models.item import ItemModel, Item
 
-
+# Create a router object to handle requests for the "/items" endpoint
 router = APIRouter()
 
+@router.post("/items/")
+async def create_item(item: Item):
+    db_item = ItemModel(**item.dict())
 
+    if item.tax:
+        db_item.price_with_tax = item.price + item.tax
+
+    # Use a database session to add the new item
+    db = SessionLocal()
+    db.add(db_item)
+    db.commit()
+    db.refresh(db_item)
+    db.close()
+
+    return db_item
 
 @router.get("/items/")
 async def read_items():
