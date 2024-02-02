@@ -1,21 +1,13 @@
-# from typing import Optional
 from fastapi import FastAPI
-# from pydantic import BaseModel
-from core.config import DATABASE_URL, CORS_URL
-from sqlalchemy import create_engine, Column, Integer, String, Float, MetaData
-from sqlalchemy.orm import declarative_base, Session, sessionmaker
+from core.config import CORS_URL
 from fastapi.middleware.cors import CORSMiddleware
+
+from db.session import engine
+from db.session import Base
 
 from api.endpoints import item
 from api.endpoints import user
 from api.endpoints import root
-
-# Create a database engine and session
-engine = create_engine(DATABASE_URL, echo=True)
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-# Create a SQLAlchemy model for the "items" table
-Base = declarative_base()
 
 # Initialize the database schema
 Base.metadata.create_all(bind=engine)
