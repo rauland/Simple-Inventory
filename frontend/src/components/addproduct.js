@@ -31,7 +31,7 @@ function AddProduct() {
 
 		// Make a POST request to the specified endpoint
 		try {
-			const response = await fetch('http://192.168.0.2:8000/items/', {
+			const response = await fetch(`http://${process.env.REACT_APP_BACKEND_URL}/items/`, {
 				method: 'POST',
 				headers: {
 					'accept': 'application/json',

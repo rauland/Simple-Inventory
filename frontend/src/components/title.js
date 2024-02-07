@@ -6,7 +6,7 @@ function Today() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://192.168.0.2:8000/', {
+        const response = await fetch(`http://${process.env.REACT_APP_BACKEND_URL}/`, {
           method: 'GET',
           headers: {
             'accept': 'application/json',

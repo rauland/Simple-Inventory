@@ -22,7 +22,7 @@ function GetProduct() {
 		e.preventDefault();
 
 		try {
-			const response = await fetch('http://192.168.0.2:8000/items/' + idData.id, {
+			const response = await fetch(`http://${process.env.REACT_APP_BACKEND_URL}/items/` + idData.id, {
 				method: 'GET',
 				headers: {
 					'accept': 'application/json',
