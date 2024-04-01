@@ -31,7 +31,7 @@ function AddProduct() {
 
 		// Make a POST request to the specified endpoint
 		try {
-			const response = await fetch(`http://${process.env.REACT_APP_BACKEND_URL}/items/`, {
+			const response = await fetch(`http://${import.meta.env.VITE_BACKEND_URL}/items/`, {
 				method: 'POST',
 				headers: {
 					'accept': 'application/json',

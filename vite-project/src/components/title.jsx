@@ -6,14 +6,14 @@ function Today() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://${process.env.REACT_APP_BACKEND_URL}/`, {
+        const response = await fetch(`http://${import.meta.env.VITE_BACKEND_URL}/`, {
           method: 'GET',
           headers: {
             'accept': 'application/json',
             'Content-Type': 'application/json'
           },
         });
-
+        console.log(import.meta.env.VITE_BACKEND_URL)
         if (response.ok) {
           const data = await response.json();
           console.log(data);
@@ -29,7 +29,7 @@ function Today() {
     fetchData(); // Call the fetchData function when the component mounts
   }, []); // The empty dependency array ensures that this effect runs only once when the component mounts
 
-  return <h1 class="element">{headerText}</h1>;
+  return <h1 className="element">{headerText}</h1>;
 }
 
 export default Today;

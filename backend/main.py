@@ -22,6 +22,7 @@ app.include_router(root.router)
 origins = [
     "http://localhost",
     "http://localhost:3000",
+    "http://localhost:5173",
     f"http://{CORS_URL}",
     f"http://{CORS_URL}:3000",
 ]

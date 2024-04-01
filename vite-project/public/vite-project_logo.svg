@@ -1,0 +1,21 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 258.40020751953125 251.20001220703125" width="775.2006225585938" height="753.6000366210938">
+  <!-- svg-source:excalidraw -->
+  
+  <defs>
+    <style class="style-fonts">
+      @font-face {
+        font-family: "Virgil";
+        src: url("https://file%2B.vscode-resource.vscode-cdn.net/c%3A/Users/Rauland/.vscode/extensions/pomdtr.excalidraw-editor-3.7.3/public//dist/excalidraw-assets/Virgil.woff2");
+      }
+      @font-face {
+        font-family: "Cascadia";
+        src: url("https://file%2B.vscode-resource.vscode-cdn.net/c%3A/Users/Rauland/.vscode/extensions/pomdtr.excalidraw-editor-3.7.3/public//dist/excalidraw-assets/Cascadia.woff2");
+      }
+      @font-face {
+        font-family: "Assistant";
+        src: url("https://file%2B.vscode-resource.vscode-cdn.net/c%3A/Users/Rauland/.vscode/extensions/pomdtr.excalidraw-editor-3.7.3/public//dist/excalidraw-assets/Assistant-Regular.woff2");
+      }
+    </style>
+    
+  </defs>
+  <g stroke-linecap="round" transform="translate(10 10) rotate(0 119.20010375976562 115.60000610351562)"><path d="M150 29 C165.19 44.08, 180.37 59.17, 208.4 87 C238.4 116, 238.4 116, 208.4 145 C190.62 162.42, 172.84 179.83, 150 202.2 C120 231.2, 120 231.2, 90 202.2 C73.14 186.13, 56.28 170.06, 30 145 C0 116, 0 116, 30 87 C52.2 65.54, 74.41 44.07, 90 29 C120 0, 120 0, 150 29" stroke="none" stroke-width="0" fill="#1e1e1e"></path><path d="M150 29 C172 50.85, 194 72.69, 208.4 87 M150 29 C167.09 45.97, 184.18 62.94, 208.4 87 M208.4 87 C238.4 116, 238.4 116, 208.4 145 M208.4 87 C238.4 116, 238.4 116, 208.4 145 M208.4 145 C188.31 164.68, 168.22 184.35, 150 202.2 M208.4 145 C195.29 157.84, 182.18 170.68, 150 202.2 M150 202.2 C120 231.2, 120 231.2, 90 202.2 M150 202.2 C120 231.2, 120 231.2, 90 202.2 M90 202.2 C74.3 187.23, 58.6 172.26, 30 145 M90 202.2 C73.12 186.11, 56.25 170.02, 30 145 M30 145 C0 116, 0 116, 30 87 M30 145 C0 116, 0 116, 30 87 M30 87 C46.48 71.07, 62.95 55.14, 90 29 M30 87 C44.84 72.65, 59.69 58.3, 90 29 M90 29 C120 0, 120 0, 150 29 M90 29 C120 0, 120 0, 150 29" stroke="#ffffff" stroke-width="4" fill="none"></path></g><g transform="translate(106.79998779296875 32.395552628823964) rotate(0 23.000320434570312 95.20544815465738)"><text x="0" y="0" font-family="Helvetica, Segoe UI Emoji" font-size="165.57469244288242px" fill="#ffffff" text-anchor="start" style="white-space: pre;" direction="ltr" dominant-baseline="text-before-edge">I</text></g></svg>
