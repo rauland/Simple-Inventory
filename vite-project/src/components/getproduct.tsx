@@ -1,4 +1,9 @@
 import { useState } from 'react';
+import { Button } from './ui/button';
+import { Input } from './ui/input';
+
+import { Card, CardTitle, CardContent, CardDescription, CardFooter, CardHeader } from './ui/card';
+  
 
 function GetProduct() {
 
@@ -7,7 +12,7 @@ function GetProduct() {
 	}
 
 	const [idData, setIdData] = useState(initialGetFormData);
-	const [resultsText, setResultsText] = useState("Get Results");
+	const [resultsText, setResultsText] = useState("Results: ");
 
 	const handleIDChange = (e) => {
 		const { name, value } = e.target;
@@ -40,16 +45,21 @@ function GetProduct() {
 	};
 
 	return (
-		<form className="element" onSubmit={handleGetFormSubmit}>
-			<h2>Get Product:</h2>
-			<label>
-				ID:
-				<input type="number" name="id" value={idData.id} onChange={handleIDChange} />
-				<br />
-				<button type="submit">Search</button>
-			</label>
-			<div id="response">{resultsText}</div>
-		</form>
+		<Card>
+			<CardHeader>
+				<CardTitle>Get Product</CardTitle>
+				<CardDescription>Use the Products ID to retreive it's details</CardDescription>
+			</CardHeader>
+			<CardContent>
+				<form className="flex w-full max-w-sm items-center space-x-2" onSubmit={handleGetFormSubmit}>
+					<Input type="number" name="id" placeholder="ID Number" value={idData.id} onChange={handleIDChange} />
+					<Button type="submit">Search</Button>
+				</form>
+			</CardContent>
+			<CardFooter>
+				{resultsText}
+			</CardFooter>
+		</Card>
 	);
 }
 

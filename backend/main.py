@@ -25,6 +25,7 @@ origins = [
     "http://localhost:5173",
     f"http://{CORS_URL}",
     f"http://{CORS_URL}:3000",
+    f"http://{CORS_URL}:5173",
 ]
 
 app.add_middleware(

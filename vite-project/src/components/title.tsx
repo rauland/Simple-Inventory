@@ -29,7 +29,7 @@ function Today() {
     fetchData(); // Call the fetchData function when the component mounts
   }, []); // The empty dependency array ensures that this effect runs only once when the component mounts
 
-  return <h1 className="element">{headerText}</h1>;
+  return <p className="text-2xl mb-4 mt-4">{headerText}</p>;
 }
 
 export default Today;
