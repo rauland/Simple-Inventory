@@ -1,6 +1,6 @@
 # webapp
 
-![image](https://github.com/rauland/webapp/assets/30706122/0453ca6e-0a7f-4b65-b2ed-fe633b2a8811)
+![image](https://github.com/rauland/Simple-Inventory/assets/30706122/18b18679-b04c-4f1a-b3aa-a2598c9c36fc)
 
 ### React + Vite Front-End
 To Run the Frontend Development Server <br>
