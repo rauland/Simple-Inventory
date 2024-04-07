@@ -26,6 +26,8 @@ origins = [
     f"http://{CORS_URL}",
     f"http://{CORS_URL}:3000",
     f"http://{CORS_URL}:5173",
+    "https://5bqbd24k-5173.aue.devtunnels.ms/",
+    "https://5bqbd24k-5173",
 ]
 
 app.add_middleware(

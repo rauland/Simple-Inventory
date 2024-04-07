@@ -1,8 +1,8 @@
 import './App.css'
 // My Functions
 import Today from './components/title';
-import GetProduct from './components/getproduct';
-import AddProduct from './components/addproduct';
+import GetProduct from './components/get-product';
+import AddProduct from './components/add-product';
 
 import { ThemeProvider } from "@/components/theme-provider"
 import { ModeToggle } from "@/components/mode-toggle"

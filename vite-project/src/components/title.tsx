@@ -6,7 +6,7 @@ function Today() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://${import.meta.env.VITE_BACKEND_URL}/`, {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/`, {
           method: 'GET',
           headers: {
             'accept': 'application/json',
